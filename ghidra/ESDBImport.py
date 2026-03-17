@@ -58,7 +58,7 @@ if file_path:
             return esdb_symbol_map[address]
         return None
 
-    memory = currentProgram().getMemory()
+    memory = currentProgram.getMemory()
     ghidra_segments = memory.getBlocks()
     ghidra_segment_map = {}
     for segment in ghidra_segments:
@@ -69,7 +69,7 @@ if file_path:
             }
         }
     
-    symbol_table = currentProgram().getSymbolTable()
+    symbol_table = currentProgram.getSymbolTable()
     for segment_name, symbols in esdb_symbol_map.items():
         ghidra_segment_name_candidates = []
         ghidra_segment_name = ''
