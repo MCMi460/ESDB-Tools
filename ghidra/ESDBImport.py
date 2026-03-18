@@ -81,6 +81,7 @@ if file_path:
             overlay_tag, overlay_number = tokens[:2]
             ghidra_segment_name_candidates.append(f'overlay_{overlay_number}')
             ghidra_segment_name_candidates.append(f'overlay_d_{overlay_number}')
+            ghidra_segment_name_candidates.append(f'OVL_{overlay_number}')
 
         for name in ghidra_segment_name_candidates:
             if name in ghidra_segment_map:
