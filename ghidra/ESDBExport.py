@@ -36,9 +36,13 @@ if file_path:
             if "overlay_" in symbol_segment:
                 segment_type = 'OVERLAY'
 
+            fixed_segment_name = symbol_segment
+            if symbol_segment == "ram":
+                fixed_segment_name = "ARM9"
+
             segments.update({ 
                 symbol_segment : {
-                    'Name' : symbol_segment,
+                    'Name' : fixed_segment_name,
                     'Type' : segment_type,
                 }
             })
