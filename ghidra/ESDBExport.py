@@ -31,12 +31,12 @@ if file_path:
 
         # If the symbol segment is not in the segments, add the info
         if symbol_segment not in segments.keys():
+            fixed_segment_name = symbol_segment
             # TODO: Figure out how to automatically determine BSS/DATA
             segment_type = 'EXECUTABLE'
             if "overlay_" in symbol_segment:
                 segment_type = 'OVERLAY'
-
-            fixed_segment_name = symbol_segment
+                fixed_segment_name = symbol_segment.split("_")[-1]
             if symbol_segment == "ram":
                 fixed_segment_name = "ARM9"
 
