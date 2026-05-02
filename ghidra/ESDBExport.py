@@ -55,6 +55,12 @@ if file_path:
         is_thumb = (val == 1) if val is not None else False
         address_fixup += 1 if is_thumb else 0
 
+        # Ignore thunked functions
+        functionManager = currentProgram.getFunctionManager()
+        function = functionManager.getFunctionAt(addr)
+        if symbol_name.endswith('+1') or function and function.isThunk():
+            continue
+
         # Add symbol (or merge if a +1 is there)
         fixed_name = symbol_name.strip('+1') 
         symbols.update({ 
