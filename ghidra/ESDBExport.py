@@ -62,7 +62,7 @@ if file_path:
             continue
 
         # Add symbol (or merge if a +1 is there)
-        fixed_name = symbol_name.strip('+1') 
+        fixed_name = symbol_name[:-2] if symbol_name.endswith("+1") else symbol_name
         symbols.update({ 
             fixed_name : {
                 'Name' : fixed_name,
