@@ -52,7 +52,13 @@ if file_path:
 
         tmode_reg = ctx.getRegister("TMode") 
         val = ctx.getValue(tmode_reg, addr, False)
-        is_thumb = (val == 1) if val is not None else False
+        if val is not None:
+            try:
+                is_thumb = val.intValue() == 1
+            except:
+                is_thumb = val == 1
+        else:
+            is_thumb = False
         address_fixup += 1 if is_thumb else 0
 
         # Ignore thunked functions
